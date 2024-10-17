@@ -1,0 +1,12 @@
+.hb-loading {
+  height: 100%;
+}
+.hb-loading:not(.active) {
+  display: none;
+}
+.hb-loading__inner {
+  margin: 15px;
+  border-radius: 24px;
+  background-color: var(--hb-color1);
+}
+/*# sourceMappingURL=_block-loading.css.map */
