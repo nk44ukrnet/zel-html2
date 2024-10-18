@@ -184,7 +184,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         let swiper = new Swiper(".mySwiper", {
             clickable: true,
-            initialSlide: 1, // initial slide
+            //initialSlide: 1, // initial slide
             pagination: {
                 el: ".swiper-pagination1",
                 clickable: true,
