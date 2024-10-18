@@ -1,4 +1,121 @@
 window.addEventListener('DOMContentLoaded', () => {
+
+    //expandable boxes
+    function cellsInitialSetup() {
+        let cells = document.querySelectorAll('.hb-expand-cell');
+        if (cells.length) {
+            cells.forEach(cell => {
+                let minHeight = cell.scrollHeight;
+                cell.style.minHeight = `${minHeight}px`;
+            })
+        }
+    }
+
+    function cellsActiveOnlyFirst() {
+        let cells = document.querySelectorAll('.hb-expand-cell');
+        if (cells.length) {
+            cells.forEach(cell => {
+                let cellItems = cell.querySelectorAll('.hb-expand-cell__item');
+                if (cellItems.length) {
+                    for (let i = 0; i < cellItems.length; i++) {
+                        if (i === 0) {
+                            continue;
+                        } else {
+                            cellItems[i].classList.remove('active');
+                        }
+                    }
+                }
+            })
+        }
+    }
+
+    function removeAllActiveClassesFromCurrentParent(el) {
+        let cellItems = el.querySelectorAll('.hb-expand-cell__item');
+        if (cellItems.length) {
+            cellItems.forEach(item => {
+                item.classList.remove('active');
+            });
+        }
+    }
+
+    function cellsActiveClick() {
+        let cellItems = document.querySelectorAll('.hb-expand-cell__item');
+        if (cellItems.length) {
+            for (let i = 0; i < cellItems.length; i++) {
+                cellItems[i].addEventListener('click', function (event) {
+                    if (cellItems[i].classList.contains('active')) {
+                        cellItems[i].classList.remove('active')
+                    } else {
+                        let parentCell = cellItems[i].closest('.hb-expand-cell');
+                        if (parentCell) {
+                            removeAllActiveClassesFromCurrentParent(parentCell);
+                            cellItems[i].classList.add('active')
+                        }
+                    }
+                });
+            }
+        }
+    }
+
+    function onceFetchIsDone() {
+        try {
+
+            let cells = document.querySelectorAll('.hb-expand-cell');
+            if (cells.length) {
+                // cellsInitialSetup();
+                cellsActiveOnlyFirst();
+            }
+            const elementExpand = document.querySelectorAll('.hb-expand-cell__desc');
+
+            elementExpand.forEach(element => {
+                element.setAttribute('style', `--hb-max-height: ${element.scrollHeight}px`);
+            });
+
+            cellsActiveClick();
+
+            // gsap.registerPlugin(ScrollTrigger);
+            // gsap
+            //     .timeline({
+            //         scrollTrigger: {
+            //             trigger: ".hb-expand-cell",
+            //             scrub: 0.3,
+            //             start: "top top",
+            //             markers: true,
+            //             pin: true
+            //         }
+            //     })
+            //     .to(".hb-expand-cell__item", {
+            //         className: "+=active",
+            //         duration: 1,
+            //         ease: "none",
+            //         stagger: {
+            //             each: 2,
+            //             yoyo: true,
+            //             repeat: 1
+            //         }
+            //     });
+
+            // const sectionAnim = document.querySelectorAll('.hb-expand-cell__item');
+            // const sectionAnimObserve = new IntersectionObserver((entries, observe) => {
+            //     const [entry] = entries;
+            //     if (!entry.isIntersecting) return;
+            //     if (entry.target.classList.contains('hb-expand-cell__item')) {
+            //         entry.target.classList.toggle('active');
+            //         // observe.unobserve(entry.target);
+            //     }
+            // });
+            // sectionAnim.forEach(section => {
+            //     sectionAnimObserve.observe(section);
+            // });
+
+
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    onceFetchIsDone()
+
     //loading words
     try {
         let phrases = [
@@ -56,7 +173,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     //swiper
     try {
-
         const customPaginationValues = [
             'Info',
             'Highlights',
@@ -68,6 +184,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         let swiper = new Swiper(".mySwiper", {
             clickable: true,
+            initialSlide: 1, // initial slide
             pagination: {
                 el: ".swiper-pagination1",
                 clickable: true,
@@ -87,23 +204,24 @@ window.addEventListener('DOMContentLoaded', () => {
     try {
         let input = document.querySelector('#hb-target-footer-input');
         let wrapper = document.querySelector('.hb-footer-form__wrapper');
-        if(input) {
+        if (input) {
             let currentPlaceholder = input.placeholder;
 
-            function focusIn(){
+            function focusIn() {
                 input.placeholder = 'Insert your email for early access ';
-                if(wrapper) {
+                if (wrapper) {
                     wrapper.classList.add('active');
                 }
             }
-            function focusOut(){
+
+            function focusOut() {
                 input.placeholder = currentPlaceholder;
-                if(wrapper) {
+                if (wrapper) {
                     wrapper.classList.remove('active');
                 }
             }
 
-            input.addEventListener('mouseover', ()=>{
+            input.addEventListener('mouseover', () => {
                 input.focus()
             });
             // input.addEventListener('mouseOut', focusIn);
@@ -113,5 +231,6 @@ window.addEventListener('DOMContentLoaded', () => {
     } catch (e) {
         console.log(e)
     }
+
 
 })
