@@ -1,0 +1,143 @@
+.swiper-slide {
+}
+
+.swiper-slide3 {
+}
+
+.swiper-slide-type3 {
+
+  &__holder {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 23px;
+    padding-top: 120px;
+    width: 100%;
+    max-width: 1096px;
+    margin-inline: auto;
+
+    @media (max-width: @slideType3Breakpoint) {
+      padding-top: 40px;
+      padding-bottom: 78px;
+      justify-content: center;
+    }
+  }
+
+  .hb-heading-type1 {
+    margin-bottom: 24px;
+
+    @media (max-width: @slideType3Breakpoint) {
+      text-align: center;
+      font-size: 24px;
+    }
+  }
+
+  &__text {
+  }
+
+  &__graph {
+    flex: 0 1 510px;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 60px;
+
+    @media (max-width: 1106px) {
+      flex: 0 1 350px;
+    }
+
+    @media (max-width: @slideType3Breakpoint) {
+      padding-top: 0;
+    }
+
+    @media (max-width: 994px) {
+      order: -1;
+      flex: 1 1 100%;
+      justify-content: center;
+    }
+  }
+}
+
+.swiper-slide-inner {
+}
+
+
+.active {
+}
+
+.hb-circle-wrapper {
+  position: relative;
+  width: 323px;
+  height: 323px;
+  border-radius: 50%;
+  background: conic-gradient(rgba(#F7836B, 0.19) 0deg, rgba(#F7836B, 0.19) var(--fill, 0%), #F7836B var(--fill, 0%), #F7836B 360deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -5px 5px 15px rgba(0, 0, 0, .25);
+  transition: all 0.25s linear;
+
+  @media (max-width: @slideType3Breakpoint) {
+    width: 262px;
+    height: 262px;
+  }
+}
+
+.hb-circle-graph {
+  width: 277px;
+  height: 277px;
+  border-radius: 50%;
+  background-color: #F3F3F3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: @slideType3Breakpoint) {
+    width: 224px;
+    height: 224px;
+  }
+
+  &__inner {
+
+  }
+}
+
+.hb-big-score {
+  text-align: center;
+  strong {
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 142%;
+    letter-spacing: 0.02em;
+    color: #4a4a4a;
+
+    @media (max-width: @slideType3Breakpoint) {
+      font-size: 68px;
+      line-height: 120%;
+    }
+  }
+
+  span {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 142%;
+    letter-spacing: 0.02em;
+    color: #4a4a4a;
+
+    @media (max-width: @slideType3Breakpoint) {
+      font-size: 26px;
+    }
+  }
+}
+
+.hb-big-score--desc {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 122%;
+  text-align: center;
+  color: #4a4a4a;
+
+  @media (max-width: @slideType3Breakpoint) {
+    font-size: 14px;
+  }
+}
