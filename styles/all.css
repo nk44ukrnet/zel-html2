@@ -1663,6 +1663,9 @@ body {
   line-height: 161%;
   color: #7a7a7a;
 }
+.hb-login:not(.active) {
+  display: none;
+}
 .hb-content-side1 {
   flex: 0 1 670px;
   display: flex;
