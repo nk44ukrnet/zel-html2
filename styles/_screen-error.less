@@ -1,0 +1,120 @@
+.hb-error {
+  &:not(.active) {
+    display: none;
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 100vh;
+  width: 100%;
+  background: url(../img/error-bg-desktop1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+  @media (max-width: 450px) {
+    background: url(../img/error-bg-mob1.png);
+  }
+
+  &__container {
+    width: 100%;
+    max-width: 700px;
+    margin-inline: auto;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  &__logo {
+    position: absolute;
+    top: 20px;
+    left: 24px;
+  }
+
+  &__content {
+  }
+
+  &__img {
+    @media (max-width: @mobile) {
+      display: inline-block;
+      width: 108.4px;
+      height: 96.01px;
+      object-fit: contain;
+    }
+  }
+
+  &__heading {
+    margin-top: 10px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 35px;
+    line-height: 125%;
+    text-align: center;
+    color: #4a4a4a;
+
+    @media (max-width: @mobile) {
+      margin-top: 16px;
+      margin-bottom: 6px;
+      font-size: 24px;
+      line-height: 123%;
+    }
+  }
+
+  &__desc {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 169%;
+    text-align: center;
+    color: #4a4a4a;
+    margin-bottom: 24px;
+
+    @media (max-width: @mobile) {
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    position: relative;
+    text-decoration: none;
+    width: fit-content;
+    margin-inline: auto;
+
+    &, &:focus, &:visited {
+      color: #7a7a7a;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #7a7a7a;
+    }
+
+    span {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 161%;
+      color: #7a7a7a;
+    }
+  }
+
+}
+
+.active {
+}
+
+.hb-desktop-only {
+}
+
+.hb-mobile-only {
+}

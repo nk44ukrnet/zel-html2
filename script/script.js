@@ -114,7 +114,51 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    //navigation between screens func
+    function screenNav(el){
+        let screenLogin = document.querySelector(`.hb-login`);
+        let screenLoading = document.querySelector(`.hb-loading`);
+        let screenError = document.querySelector(`.hb-error`);
+        let screenSlider = document.querySelector(`.hb-content`);
+        let activeCSSClass = 'active';
+
+        let screensArr = [
+            screenLogin,
+            screenLoading,
+            screenError,
+            screenSlider
+        ];
+        screensArr.forEach(screen => {
+            screen.classList.remove(activeCSSClass);
+        });
+
+        let targetScreen = document.querySelector(`.${el}`);
+        if(targetScreen) {
+            targetScreen.classList.add(activeCSSClass);
+        }
+    }
+
     onceFetchIsDone()
+
+
+
+
+    //temp nav
+    try {
+        let navA = document.querySelectorAll('.hb-nav-test a');
+        for (let i = 0; i < navA.length; i++) {
+            navA[i].addEventListener('click', e=>{
+                let current = e.target;
+                let attr = current.getAttribute('data-to-screen');
+                if(attr) {
+                    screenNav(attr);
+                }
+            })
+        }
+
+    } catch (e) {
+        console.log(e);
+    }
 
     //loading words
     try {
@@ -184,7 +228,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         let swiper = new Swiper(".mySwiper", {
             clickable: true,
-            initialSlide: 5, // initial slide
+            // initialSlide: 1, // initial slide
             pagination: {
                 el: ".swiper-pagination1",
                 clickable: true,
