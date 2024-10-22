@@ -1950,8 +1950,6 @@ body {
   margin-top: 72px;
   padding-bottom: 78px;
 }
-@media (max-width: 1280px) {
-}
 @media (max-width: 1211px) {
   .swiper-slide-type2__holder {
     flex-wrap: wrap;
