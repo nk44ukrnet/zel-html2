@@ -1446,14 +1446,14 @@ body {
     object-fit: contain;
   }
 }
-.hb-loading .hb-pane-bot {
+.hb-loading .hb-plane-bot {
   position: absolute;
   pointer-events: none;
   right: 109px;
   bottom: 115px;
 }
 @media (max-width: 768px) {
-  .hb-loading .hb-pane-bot {
+  .hb-loading .hb-plane-bot {
     width: 74px;
     height: 79px;
     object-fit: contain;
@@ -1663,8 +1663,258 @@ body {
   line-height: 161%;
   color: #7a7a7a;
 }
+.hb-login {
+  background: url(../img/login-bg-descktop.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+}
 .hb-login:not(.active) {
   display: none;
+}
+@media (max-width: 450px) {
+  .hb-login {
+    background: url(../img/login-bg-mob.png);
+  }
+}
+.hb-login .hb-plane-top {
+  position: absolute;
+  pointer-events: none;
+  top: 57px;
+  left: 199px;
+}
+@media (max-width: 768px) {
+  .hb-login .hb-plane-top {
+    top: 65px;
+    left: 48px;
+    width: 86px;
+    height: 70px;
+    object-fit: contain;
+  }
+}
+.hb-login .hb-label {
+  position: absolute;
+  pointer-events: none;
+  bottom: 99px;
+  left: 149px;
+}
+@media (max-width: 768px) {
+  .hb-login .hb-label {
+    bottom: 202px;
+    left: 63px;
+    width: 55px;
+    height: 61px;
+    object-fit: contain;
+  }
+}
+.hb-login .hb-plane-bot {
+  position: absolute;
+  pointer-events: none;
+  right: 109px;
+  bottom: 115px;
+}
+@media (max-width: 768px) {
+  .hb-login .hb-plane-bot {
+    width: 74px;
+    height: 79px;
+    object-fit: contain;
+    right: 38px;
+    bottom: 48px;
+  }
+}
+.hb-login__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 89px;
+}
+@media (max-width: 768px) {
+  .hb-login__header {
+    height: 66.2px;
+  }
+}
+.hb-login__inner {
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
+  margin-top: 104px;
+  margin-bottom: 172.5px;
+  padding-bottom: 20px;
+}
+@media (max-width: 768px) {
+  .hb-login__inner {
+    margin-bottom: 187.5px;
+  }
+}
+.hb-login__header-group {
+  text-align: center;
+  position: relative;
+}
+.hb-login__heading {
+  margin-top: 0;
+  margin-bottom: 56px;
+  font-weight: 500;
+  font-size: 55px;
+  line-height: 125%;
+  text-align: center;
+  color: #4a4a4a;
+  width: 100%;
+  max-width: 535px;
+  margin-inline: auto;
+}
+@media (max-width: 768px) {
+  .hb-login__heading {
+    font-size: 35px;
+    line-height: 123%;
+  }
+}
+.hb-login .hb-icon-insta {
+  position: absolute;
+  left: 0;
+  bottom: -55px;
+}
+.hb-login .hb-icon-tiktok {
+  position: absolute;
+  right: 0;
+  bottom: -55px;
+}
+.hb-login-analysis {
+  width: 100%;
+  max-width: 283px;
+  margin-inline: auto;
+  margin-bottom: 56px;
+}
+@media (max-width: 768px) {
+  .hb-login-analysis {
+    margin-bottom: 46px;
+  }
+}
+.hb-login-analysis__header {
+  text-align: center;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 142%;
+  color: #4a4a4a;
+  margin-bottom: 10px;
+  display: table;
+  margin-inline: auto;
+}
+.hb-login-analysis__holder {
+  display: flex;
+  gap: 24.09px;
+}
+.hb-login-analysis__item {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  min-height: 16px;
+}
+.hb-login-analysis__item span {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 142%;
+  text-align: center;
+  color: #4a4a4a;
+}
+.hb-login-analysis__item:not(:last-child) {
+  border-right: 1px solid #4a4a4a;
+  padding-right: 24.09px;
+}
+.hb-login-form__holder {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.hb-login-form__item {
+  flex: 0 1 341.5px;
+  position: relative;
+}
+.hb-login-form__item.hb-has-error svg path {
+  fill: #ff4d00 !important;
+}
+.hb-login-form__item svg {
+  position: absolute;
+  pointer-events: none;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+.hb-login-form__input {
+  width: 100%;
+  height: 40px;
+  -webkit-appearance: none;
+  border: 1px solid #d9d9d9;
+  border-radius: 100px;
+  padding: 6px 16px;
+  padding-left: 50px;
+  box-sizing: border-box;
+  backdrop-filter: blur(4px);
+  box-shadow: inset 1px 1px 4px 0 rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.5);
+}
+.hb-login-form__input,
+.hb-login-form__input::placeholder {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 100%;
+  color: #7a7a7a;
+}
+.hb-login-form__input:focus,
+.hb-login-form__input:active,
+.hb-login-form__input:hover {
+  border: 1px solid #7a7a7a;
+  outline: none;
+}
+.hb-login-form__input:focus,
+.hb-login-form__input:active,
+.hb-login-form__input:hover,
+.hb-login-form__input:focus::placeholder,
+.hb-login-form__input:active::placeholder,
+.hb-login-form__input:hover::placeholder {
+  color: #4a4a4a;
+}
+.hb-has-error .hb-login-form__input {
+  border: 1px solid #ff4d00;
+}
+.hb-has-error .hb-login-form__input,
+.hb-has-error .hb-login-form__input::placeholder {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 100%;
+  color: #ff4d00;
+}
+.hb-login-form__item--divider {
+  flex: 0 1 18px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 142%;
+  text-align: center;
+  color: #4a4a4a;
+}
+.hb-login-form button[type="submit"] {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  height: 70px;
+  border: none;
+  outline: none;
+  background: #c78dff;
+  color: var(--hb-color-light);
+  box-sizing: border-box;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  transition: var(--hb-transtion1);
+}
+.hb-login-form button[type="submit"]:hover,
+.hb-login-form button[type="submit"]:focus,
+.hb-login-form button[type="submit"]:active {
+  background: rgba(199, 141, 255, 0.8);
 }
 .hb-content-side1 {
   flex: 0 1 670px;
