@@ -306,7 +306,7 @@
                                 <input type="text" name="tiktok-login" placeholder="Your TikTok username" class="hb-login-form__input ">
                             </div>
                         </div>
-                        <button type="submit" id="hb-login-submit-button">Start Audit</button>
+                        <button type="submit" id="hb-login-submit-button"><span>Start Audit</span></button>
                     </form>
                 </div>
 
@@ -365,9 +365,9 @@
                 <img class="hb-plane-bot" src="img/plane-bot.png" alt="plane" loading="lazy">
 
                 <div class="hb-loading__inner">
-                    <div class="hb-loading__progress-tooltip-wrapper" style="width: 38%" id="hb-progress-tooltip-line">
+                    <div class="hb-loading__progress-tooltip-wrapper" style="width: 10%" id="hb-progress-tooltip-line">
                         <div class="hb-loading__progress-tooltip">
-                            <span id="hb-progress-tooltip-value">38%</span>
+                            <span id="hb-progress-tooltip-value">10%</span>
                             <svg width="15" height="9" viewBox="0 0 15 9" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path d="M7.5 8.25L15 0.75H0L7.5 8.25Z" fill="#4A4A4A"/>
@@ -375,7 +375,7 @@
                         </div>
                     </div>
                     <div class="hb-loading__bar-holder">
-                        <div class="hb-loading__bar-progress" style="width: 38%" id="hb-progress-line"></div>
+                        <div class="hb-loading__bar-progress" style="width: 10%" id="hb-progress-line"></div>
                     </div>
 
                     <div class="hb-loading__text">
@@ -442,7 +442,7 @@
         </div>
     </div>
 
-    <div class="hb-content ">
+    <div class="hb-content">
         <div class="swiper mySwiper">
 
             <div class="hb-content__header hb-content-header">
@@ -528,7 +528,7 @@
                                         <div class="hb-content-box__text"></div>
                                     </div>
                                     <div class="hb-content-box__bottom">
-                                        <div class="hb-content-box__bottom-desc">Mindset Coach</div>
+                                        <div class="hb-content-box__bottom-desc" id="hb-profession">Mindset Coach</div>
                                     </div>
                                 </div>
 
@@ -550,7 +550,7 @@
                                         <div class="hb-content-box__text"></div>
                                     </div>
                                     <div class="hb-content-box__bottom">
-                                        <div class="hb-content-box__bottom-desc">People looking to transform their
+                                        <div class="hb-content-box__bottom-desc" id="hb-target-audience">People looking to transform their
                                             life
                                         </div>
                                     </div>
@@ -579,14 +579,14 @@
                                         <div class="hb-content-box__text"></div>
                                     </div>
                                     <div class="hb-content-box__bottom">
-                                        <div class="hb-content-box__bottom-desc">Instagram growth strategies</div>
+                                        <div class="hb-content-box__bottom-desc" id="hb-primary-topic-label">Instagram growth strategies</div>
                                     </div>
                                 </div>
 
                                 <div class="hb-content-box hb-content-box4">
                                     <div class="hb-content-box__top">
                                         <div class="hb-content-box__top-inner">
-                                            <div class="hb-content-box__heading">Engagement <br> rate</div>
+                                            <div class="hb-content-box__heading">Followers</div>
                                             <div class="hb-content-box__icon">
                                                 <div class="hb-content-box__circle"></div>
                                                 <svg width="22" height="18" viewBox="0 0 22 18" fill="none"
@@ -600,7 +600,7 @@
                                         <div class="hb-content-box__text"></div>
                                     </div>
                                     <div class="hb-content-box__bottom">
-                                        <div class="hb-content-box__bottom-desc">13%</div>
+                                        <div class="hb-content-box__bottom-desc"><span id="hb-followers">13</span></div>
                                     </div>
                                 </div>
 
@@ -631,7 +631,7 @@
                                         <div class="hb-content-box__text">Average posts per week</div>
                                     </div>
                                     <div class="hb-content-box__bottom">
-                                        <div class="hb-content-box__bottom-desc">2</div>
+                                        <div class="hb-content-box__bottom-desc" id="hb-consistency">2</div>
                                     </div>
                                 </div>
 
@@ -655,7 +655,7 @@
                                                 </svg>
                                             </div>
                                         </div>
-                                        <div class="hb-content-box__text">
+                                        <div class="hb-content-box__text" id="hb-niche">
                                             <span>Mindset</span>
                                             <span>tree</span>
                                             <span>Breathwo</span>
@@ -679,7 +679,7 @@
                             <div class="swiper-slide-type2__item swiper-slide-type2__item--content">
                                 <h2 class="hb-heading-type1">Key highlights</h2>
 
-                                <div class="hb-expand-cell">
+                                <div class="hb-expand-cell" id="hb-prof-summary-ul">
                                     <div class="hb-expand-cell__item active">
                                         <strong class="hb-expand-cell__heading">
                                             Stronger Hooks for Better Engagement:
@@ -721,10 +721,9 @@
                             </div>
                             <div class="swiper-slide-type2__item swiper-slide-type2__item--img">
                                 <div class="swiper-slide-type2__item--content2">
-                                    <img src="img/person.png" alt="Avatar" loading="lazy"
-                                         class="swiper-slide-type2__item--avatar">
-                                    <div class="swiper-slide-type2__item-title">Victoria AI</div>
-                                    <div class="swiper-slide-type2__item-text">"🚀 Elevating Instagram with AI...</div>
+                                    <img src="img/person.png" alt="Avatar" loading="lazy" class="swiper-slide-type2__item--avatar" id="hb-prof-img">
+                                    <div class="swiper-slide-type2__item-title" id="hb-prof-name">Victoria AI</div>
+                                    <div class="swiper-slide-type2__item-text" id="hb-prof-description">"🚀 Elevating Instagram with AI...</div>
                                 </div>
                             </div>
 
@@ -738,7 +737,7 @@
                         <div class="swiper-slide-type3__holder hb-padding-inline">
                             <div class="swiper-slide-type3__text">
                                 <h2 class="hb-heading-type1">Bio</h2>
-                                <div class="hb-expand-cell">
+                                <div class="hb-expand-cell" id="hb-bio-list">
                                     <div class="hb-expand-cell__item active">
                                         <strong class="hb-expand-cell__heading">
                                             Proof to how you help your clients is missing
@@ -778,10 +777,10 @@
                                 </div>
                             </div>
                             <div class="swiper-slide-type3__graph">
-                                <div class="hb-circle-wrapper" style="--fill: 25%;">
+                                <div class="hb-circle-wrapper" id="hb-bio-percentage" style="--fill: 25%;">
                                     <div class="hb-circle-graph">
                                         <div class="hb-circle-graph__inner">
-                                            <div class="hb-big-score"><strong>6</strong><span> / 10</span></div>
+                                            <div class="hb-big-score"><strong id="hb-bio-score-nums">6</strong><span> / 10</span></div>
                                             <div class="hb-big-score--desc">Bio Score</div>
                                         </div>
                                     </div>
@@ -797,7 +796,7 @@
                         <div class="swiper-slide-type3__holder hb-padding-inline">
                             <div class="swiper-slide-type3__text">
                                 <h2 class="hb-heading-type1">Content</h2>
-                                <div class="hb-expand-cell">
+                                <div class="hb-expand-cell" id="hb-content-score-list">
                                     <div class="hb-expand-cell__item active">
                                         <strong class="hb-expand-cell__heading">
                                             Title place holder
@@ -840,10 +839,10 @@
                                 </div>
                             </div>
                             <div class="swiper-slide-type3__graph">
-                                <div class="hb-circle-wrapper" style="--fill: 25%;">
+                                <div class="hb-circle-wrapper" id="hb-content-percentage" style="--fill: 25%;">
                                     <div class="hb-circle-graph">
                                         <div class="hb-circle-graph__inner">
-                                            <div class="hb-big-score"><strong>6</strong><span> / 10</span></div>
+                                            <div class="hb-big-score"><strong id="hb-content-score-num">6</strong><span> / 10</span></div>
                                             <div class="hb-big-score--desc">Content Score</div>
                                         </div>
                                     </div>
@@ -859,7 +858,7 @@
                         <div class="swiper-slide-type3__holder hb-padding-inline">
                             <div class="swiper-slide-type3__text">
                                 <h2 class="hb-heading-type1">Production</h2>
-                                <div class="hb-expand-cell">
+                                <div class="hb-expand-cell" id="hb-prod-score-list">
                                     <div class="hb-expand-cell__item active">
                                         <strong class="hb-expand-cell__heading">
                                             Title place holder
@@ -902,10 +901,10 @@
                                 </div>
                             </div>
                             <div class="swiper-slide-type3__graph">
-                                <div class="hb-circle-wrapper" style="--fill: 25%;">
+                                <div class="hb-circle-wrapper" id="hb-prod-score-percentage" style="--fill: 25%;">
                                     <div class="hb-circle-graph">
                                         <div class="hb-circle-graph__inner">
-                                            <div class="hb-big-score"><strong>6</strong><span> / 10</span></div>
+                                            <div class="hb-big-score"><strong id="hb-prod-score-num">6</strong><span> / 10</span></div>
                                             <div class="hb-big-score--desc">Production Score</div>
                                         </div>
                                     </div>
@@ -921,7 +920,7 @@
                         <div class="swiper-slide-type4__holder hb-padding-inline">
                             <div class="swiper-slide-type4__item swiper-slide-type4__item--text">
                                 <h2 class="hb-heading-type1">Curious how we assess a <br> video?</h2>
-                                <div class="hb-expand-cell">
+                                <div class="hb-expand-cell" id="hb-video-score-list">
                                     <div class="hb-expand-cell__item active">
                                         <strong class="hb-expand-cell__heading">
                                             Title place holder
@@ -951,7 +950,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide-type4__item swiper-slide-type4__item--img hb-img-long">
+                            <div class="swiper-slide-type4__item swiper-slide-type4__item--img" id="hb-video-score-img-type">
                                 <!-- hb-img-long css for tiktok -->
                                 <div class="swiper-slide-type4__graph-holder">
                                     <svg class="hb-svg-circle" width="71" height="71" viewBox="0 0 71 71" fill="none"
@@ -983,7 +982,7 @@
                                         <div class="swiper-slide-type4__graph-inner">
                                             <div class="swiper-slide-type4__graph-pre-img">
                                                 <img src="" alt="image" loading="lazy" decoding="async"
-                                                     class="swiper-slide-type4__graph-img">
+                                                     class="swiper-slide-type4__graph-img" id="hb-video-score-img">
                                             </div>
                                         </div>
                                     </div>

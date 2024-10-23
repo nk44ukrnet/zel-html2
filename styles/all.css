@@ -1933,7 +1933,26 @@ body {
   font-weight: 500;
   font-size: 20px;
   line-height: 100%;
+  position: relative;
   transition: var(--hb-transtion1);
+}
+.hb-login-form button[type="submit"][disabled] span {
+  display: none;
+}
+.hb-login-form button[type="submit"][disabled]::after {
+  content: "";
+  position: static;
+  width: 16px;
+  height: 16px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border: 4px solid transparent;
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: button-loading-spinner 1s ease infinite;
 }
 .hb-login-form button[type="submit"]:hover,
 .hb-login-form button[type="submit"]:focus,
@@ -2232,8 +2251,6 @@ body {
   justify-content: flex-end;
   margin-top: 72px;
   padding-bottom: 78px;
-}
-@media (max-width: 1280px) {
 }
 @media (max-width: 1211px) {
   .swiper-slide-type2__holder {
@@ -2758,6 +2775,14 @@ body {
   }
   to {
     width: calc(100% - 4px);
+  }
+}
+@keyframes button-loading-spinner {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
   }
 }
 #__bs_notify__ {
