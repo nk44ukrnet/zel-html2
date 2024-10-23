@@ -1034,7 +1034,7 @@ body {
     display: none;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .hb-desktop-only {
     display: none;
   }
@@ -1675,13 +1675,18 @@ body {
 @media (max-width: 450px) {
   .hb-login {
     background: url(../img/login-bg-mob.png);
+    background-size: cover;
+    background-position: top right;
   }
+}
+.hb-login .hb-container-max {
+  position: relative;
 }
 .hb-login .hb-plane-top {
   position: absolute;
   pointer-events: none;
-  top: 57px;
-  left: 199px;
+  top: 29px;
+  left: 95px;
 }
 @media (max-width: 768px) {
   .hb-login .hb-plane-top {
@@ -1695,13 +1700,13 @@ body {
 .hb-login .hb-label {
   position: absolute;
   pointer-events: none;
-  bottom: 99px;
+  bottom: 66px;
   left: 149px;
 }
 @media (max-width: 768px) {
   .hb-login .hb-label {
-    bottom: 202px;
-    left: 63px;
+    bottom: 86px;
+    left: 40px;
     width: 55px;
     height: 61px;
     object-fit: contain;
@@ -1711,7 +1716,7 @@ body {
   position: absolute;
   pointer-events: none;
   right: 109px;
-  bottom: 115px;
+  bottom: 76px;
 }
 @media (max-width: 768px) {
   .hb-login .hb-plane-bot {
@@ -1737,13 +1742,15 @@ body {
   width: 100%;
   max-width: 760px;
   margin-inline: auto;
-  margin-top: 104px;
-  margin-bottom: 172.5px;
-  padding-bottom: 20px;
+  padding-top: 104px;
+  padding-bottom: 172.5px;
+  z-index: 2;
+  position: relative;
 }
 @media (max-width: 768px) {
   .hb-login__inner {
-    margin-bottom: 187.5px;
+    margin-block: 0;
+    padding-block: 187.5px;
   }
 }
 .hb-login__header-group {
@@ -1766,6 +1773,7 @@ body {
   .hb-login__heading {
     font-size: 35px;
     line-height: 123%;
+    max-width: 342px;
   }
 }
 .hb-login .hb-icon-insta {
@@ -1826,9 +1834,20 @@ body {
   align-items: center;
   margin-bottom: 24px;
 }
+@media (max-width: 768px) {
+  .hb-login-form__holder {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
 .hb-login-form__item {
   flex: 0 1 341.5px;
   position: relative;
+}
+@media (max-width: 768px) {
+  .hb-login-form__item {
+    flex: 1 1 100%;
+  }
 }
 .hb-login-form__item.hb-has-error svg path {
   fill: #ff4d00 !important;
@@ -1893,6 +1912,11 @@ body {
   text-align: center;
   color: #4a4a4a;
 }
+@media (max-width: 768px) {
+  .hb-login-form__item--divider {
+    line-height: 100%;
+  }
+}
 .hb-login-form button[type="submit"] {
   width: 100%;
   display: flex;
@@ -1915,6 +1939,15 @@ body {
 .hb-login-form button[type="submit"]:focus,
 .hb-login-form button[type="submit"]:active {
   background: rgba(199, 141, 255, 0.8);
+}
+@media (max-width: 768px) {
+  .hb-login-form button[type="submit"] {
+    height: 40px;
+    background: linear-gradient(180deg, #c890ff 0%, rgba(158, 82, 233, 0.8) 100%);
+    font-weight: 400;
+    font-size: 12px;
+    font-family: var(--hb-font2);
+  }
 }
 .hb-content-side1 {
   flex: 0 1 670px;
@@ -2199,6 +2232,8 @@ body {
   justify-content: flex-end;
   margin-top: 72px;
   padding-bottom: 78px;
+}
+@media (max-width: 1280px) {
 }
 @media (max-width: 1211px) {
   .swiper-slide-type2__holder {

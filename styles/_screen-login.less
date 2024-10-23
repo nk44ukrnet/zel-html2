@@ -10,6 +10,12 @@
 
   @media (max-width: 450px) {
     background: url(../img/login-bg-mob.png);
+    background-size: cover;
+    background-position: top right;
+  }
+
+  .hb-container-max {
+    position: relative;
   }
 
   //svgs
@@ -18,8 +24,8 @@
     //display: none;
     position: absolute;
     pointer-events: none;
-    top: 57px;
-    left: 199px;
+    top: 29px;
+    left: 95px;
 
     @media (max-width: @mobile) {
       top: 65px;
@@ -34,12 +40,12 @@
     //display: none;
     position: absolute;
     pointer-events: none;
-    bottom: 99px;
+    bottom: 66px;
     left: 149px;
 
     @media (max-width: @mobile) {
-      bottom: 202px;
-      left: 63px;
+      bottom: 86px;
+      left: 40px;
       width: 55px;
       height: 61px;
       object-fit: contain;
@@ -51,7 +57,7 @@
     position: absolute;
     pointer-events: none;
     right: 109px;
-    bottom: 115px;
+    bottom: 76px;
 
     @media (max-width: @mobile) {
       width: 74px;
@@ -77,12 +83,17 @@
     width: 100%;
     max-width: 760px;
     margin-inline: auto;
-    margin-top: 104px;
-    margin-bottom: 172.5px;
-    padding-bottom: 20px;
+    padding-top: 104px;
+    padding-bottom: 172.5px;
+    //padding-bottom: 20px;
+    z-index: 2;
+    position: relative;
 
     @media (max-width: @mobile) {
-      margin-bottom: 187.5px;
+      //margin-top: 121px;
+      //margin-bottom: 187.5px;
+      margin-block: 0;
+      padding-block: 187.5px;
     }
   }
 
@@ -106,6 +117,7 @@
     @media (max-width: @mobile) {
       font-size: 35px;
       line-height: 123%;
+      max-width: 342px;
     }
   }
 
@@ -113,6 +125,10 @@
     position: absolute;
     left: 0;
     bottom: -55px;
+
+    @media (max-width: @mobile) {
+
+    }
   }
 
   .hb-icon-tiktok {
@@ -204,11 +220,20 @@
     gap: 16px;
     align-items: center;
     margin-bottom: 24px;
+
+    @media (max-width: @mobile) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 
   &__item {
     flex: 0 1 341.5px;
     position: relative;
+
+    @media (max-width: @mobile) {
+      flex: 1 1 100%;
+    }
 
     &.hb-has-error {
       svg path {
@@ -276,6 +301,10 @@
     line-height: 142%;
     text-align: center;
     color: #4a4a4a;
+
+    @media (max-width: @mobile) {
+      line-height: 100%;
+    }
   }
 
   button[type="submit"] {
@@ -300,6 +329,14 @@
 
     &:hover, &:focus, &:active {
       background: rgba(199, 141, 255, 0.8);
+    }
+
+    @media (max-width: @mobile) {
+      height: 40px;
+      background: linear-gradient(180deg, #c890ff 0%, rgba(158, 82, 233, 0.8) 100%);
+      font-weight: 400;
+      font-size: 12px;
+      font-family: var(--hb-font2);
     }
   }
 }
