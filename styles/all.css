@@ -2339,6 +2339,7 @@ body {
   object-fit: cover;
   display: table;
   margin-bottom: 25px;
+  border-radius: 50%;
 }
 @media (max-width: 1211px) {
   .swiper-slide-type2__item--avatar {
