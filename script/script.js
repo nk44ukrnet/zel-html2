@@ -115,7 +115,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     //navigation between screens func
-    function screenNav(el){
+    function screenNav(el) {
         let screenLogin = document.querySelector(`.hb-login`);
         let screenLoading = document.querySelector(`.hb-loading`);
         let screenError = document.querySelector(`.hb-error`);
@@ -133,24 +133,108 @@ window.addEventListener('DOMContentLoaded', () => {
         });
 
         let targetScreen = document.querySelector(`.${el}`);
-        if(targetScreen) {
+        if (targetScreen) {
             targetScreen.classList.add(activeCSSClass);
+        }
+    }
+
+    function fillIDElWithContent(id, content) {
+        let el = document.querySelector(`#${id}`);
+        if (el) {
+            el.innerHTML = content;
+        }
+    }
+
+    function setProgressBarLength(val) {
+        let progressLine = document.querySelector('#hb-progress-line');
+        let progressToolTipLine = document.querySelector('#hb-progress-tooltip-line');
+        let progressToolTipValue = document.querySelector('#hb-progress-tooltip-value');
+        if (progressLine && progressToolTipLine && progressToolTipValue) {
+            progressLine.style.width = `${val}%`;
+            progressToolTipLine.style.width = `${val}%`;
+            progressToolTipValue.innerHTML = `${val}%`;
         }
     }
 
     onceFetchIsDone()
 
 
+    //form login + API fetch logic
+    try {
+        const API_BASE_URL = `https://us-central1-development-427007.cloudfunctions.net/`;
+        const tempName = 'lacey_swift'
+        const sampleIDForQuickDataAccess = '783b27d0-e9cf-4799-8d0a-84815ab544c7';
+
+        function preparedToPostURL({type = 'instagram', accountId = tempName}) {
+            //possible types: 'instagram', 'tiktok'
+            return `${API_BASE_URL}execute_workflow?workflow=social_audit&social_media_type=${type}&social_account_id=${accountId}`
+        }
+
+        function getTrackRequestURL(id) {
+            return `${API_BASE_URL}track_workflow?request_id=${id}`
+        }
+
+        let formEl = document.querySelector('.hb-login-form');
+        let submitBtn = document.querySelector('#hb-login-submit-button');
+
+        formEl.addEventListener('submit', e => {
+            e.preventDefault();
+            let instaLoginValue = formEl.querySelector('input[name="insta-login"]').value;
+            let tiktokLoginValue = formEl.querySelector('input[name="tiktok-login"]').value;
+
+            if (submitBtn) {
+                //temp disable submit button to prevent many requests
+                submitBtn.setAttribute('disabled', 'disabled');
+                setTimeout(() => {
+                    submitBtn.removeAttribute('disabled')
+                }, 6000);
+            }
+
+            //use values if they are not empty
+            if (instaLoginValue.trim() || tiktokLoginValue.trim()) {
+
+                let socialNetworkType = '';
+                let loginOfSocialNetworkToBeUsed = '';
+
+                if (instaLoginValue.trim()) {
+                    socialNetworkType = 'instagram';
+                    loginOfSocialNetworkToBeUsed = instaLoginValue.trim();
+                }
+                if (tiktokLoginValue.trim()) {
+                    socialNetworkType = 'tiktok';
+                    loginOfSocialNetworkToBeUsed = tiktokLoginValue.trim();
+                }
+
+                axios.post(preparedToPostURL({
+                    type: socialNetworkType,
+                    accountId: loginOfSocialNetworkToBeUsed
+                }))
+                    .then(function (response) {
+
+                    })
+                    .catch(function (error) {
+                        screenNav('hb-error')
+                        console.log(error);
+                    })
+
+            }
+
+        });
+
+
+    } catch (e) {
+        console.log(e)
+    }
 
 
     //temp nav
     try {
         let navA = document.querySelectorAll('.hb-nav-test a');
         for (let i = 0; i < navA.length; i++) {
-            navA[i].addEventListener('click', e=>{
+            navA[i].addEventListener('click', e => {
                 let current = e.target;
                 let attr = current.getAttribute('data-to-screen');
-                if(attr) {
+                if (attr) {
                     screenNav(attr);
                 }
             })
