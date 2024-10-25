@@ -1,4 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
+    const MOB_SIZE = 768;
 
     //expandable boxes
     function cellsInitialSetup() {
@@ -105,7 +106,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function returnFormattedAccordionItems(data) {
         let output = ``;
-        data.forEach(item=>{
+        data.forEach(item => {
             let itemSplit = item.split(':');
             let heading = itemSplit[0].replaceAll('*', '');
             itemSplit.shift();
@@ -133,12 +134,12 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function setPercentagePercent(element, percentage){
+    function setPercentagePercent(element, percentage) {
         let displayPercentage = 100 - (percentage * 10);
         element.style.setProperty('--fill', `${displayPercentage}%`);
     }
 
-    //onceFetchIsDone()
+    //onceFetchIsDone();
 
 
     //form login + API fetch logic
@@ -163,7 +164,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const followers = document.querySelector(`#hb-followers`); //+
         const profession = document.querySelector(`#hb-profession`); //+
         // const engagementRate = document.querySelector(`#hb-engagement-rate`);
-        const consistency = document.querySelector(`#hb-consistency`); //+
+        //const consistency = document.querySelector(`#hb-consistency`); //+
         const niche = document.querySelector(`#hb-niche`); //+
         //slide2
         const profSummaryUl = document.querySelector(`#hb-prof-summary-ul`); //+
@@ -193,14 +194,26 @@ window.addEventListener('DOMContentLoaded', () => {
         formEl.addEventListener('submit', e => {
             e.preventDefault();
             let instaLoginValue = formEl.querySelector('input[name="insta-login"]').value;
+            let instaLoginEl = formEl.querySelector('input[name="insta-login"]').closest('.hb-login-form__item');
             let tiktokLoginValue = formEl.querySelector('input[name="tiktok-login"]').value;
+            let tiktokLoginEl = formEl.querySelector('input[name="tiktok-login"]').closest('.hb-login-form__item');
+
+            let inputErrCSSClass = 'hb-has-error';
 
             if (submitBtn) {
                 //temp disable submit button to prevent many requests
-                submitBtn.setAttribute('disabled', 'disabled');
-                setTimeout(() => {
-                    submitBtn.removeAttribute('disabled')
-                }, 10000);
+                if(instaLoginValue.trim() === '' && tiktokLoginValue.trim() === '') {
+                    instaLoginEl.classList.add(inputErrCSSClass);
+                    tiktokLoginEl.classList.add(inputErrCSSClass);
+                } else {
+                    submitBtn.setAttribute('disabled', 'disabled');
+                    instaLoginEl.classList.remove(inputErrCSSClass);
+                    tiktokLoginEl.classList.remove(inputErrCSSClass);
+                    setTimeout(() => {
+                        submitBtn.removeAttribute('disabled')
+                    }, 10000);
+                }
+
             }
 
             //use values if they are not empty
@@ -234,11 +247,7 @@ window.addEventListener('DOMContentLoaded', () => {
                                         let data = trackResponse.data;
                                         if (data.elapsed_percentage !== undefined && data.elapsed_percentage < 100) {
                                             console.log(`Progress: ${data.elapsed_percentage}%`);
-                                            if (data.elapsed_percentage > 10) {
-                                                setProgressBarLength(data.elapsed_percentage);
-                                            } else {
-                                                setProgressBarLength(10);
-                                            }
+                                            setProgressBarLength(data.elapsed_percentage);
                                         } else {
                                             console.log('Final data:', data);
                                             let results = data.results_data;
@@ -250,7 +259,7 @@ window.addEventListener('DOMContentLoaded', () => {
                                                 const followersContent = results.userInfo.followers;
                                                 const professionContent = results.userInfo.account_info.profession;
                                                 // const engagementRateContent = results.userInfo.results_summary.engagement_rate;
-                                                const consistencyContent = results.userInfo.numRecentPosts;
+                                                //const consistencyContent = results.userInfo.numRecentPosts;
                                                 const nicheContent = results.userInfo.account_info.area_of_expertise; //arr
                                                 //slide2
                                                 const profSummaryUlContent = results.userInfo.highlights.profile_highlights; //arr
@@ -282,89 +291,73 @@ window.addEventListener('DOMContentLoaded', () => {
                                                     followers.innerHTML = followersContent;
                                                     console.log('followers done')
                                                 }
-                                                if (professionContent &&  profession) {
+                                                if (professionContent && profession) {
                                                     profession.innerHTML = professionContent;
                                                     console.log('profession done')
                                                 }
-                                                if(consistencyContent && consistency) {
-                                                    consistency.innerHTML = consistencyContent;
-                                                    console.log(`consistencyContent done`);
-                                                }
+                                                // if (consistencyContent && consistency) {
+                                                //     consistency.innerHTML = consistencyContent;
+                                                //     console.log(`consistencyContent done`);
+                                                // }
                                                 // if(engagementRateContent && engagementRate) {
                                                 //     engagementRate.innerHTML = engagementRateContent;
                                                 //     console.log('engagementRate done')
                                                 // }
-                                                if(nicheContent && nicheContent.length && niche) {
+                                                if (nicheContent && nicheContent.length && niche) {
                                                     niche.innerHTML = nicheContent.map(item => `<span>${item}</span>`).join('');
-                                                    console.log('nicheContent done');
                                                 }
                                                 //slide2
-                                                if(profSummaryUlContent && profSummaryUlContent.length && profSummaryUl) {
+                                                if (profSummaryUlContent && profSummaryUlContent.length && profSummaryUl) {
                                                     profSummaryUl.innerHTML = returnFormattedAccordionItems(profSummaryUlContent);
-                                                    console.log('profSummaryUlContent done')
                                                 }
-                                                if(profImage && profImageContent) {
+                                                if (profImage && profImageContent) {
                                                     profImage.setAttribute('src', profImageContent);
-                                                    console.log(`profImageContent done`);
                                                 }
-                                                if(profName && profNameContent) {
+                                                if (profName && profNameContent) {
                                                     profName.innerHTML = profNameContent;
-                                                    console.log(`profNameContent done`)
                                                 }
-                                                if(profDescription && profDescriptionContent){
+                                                if (profDescription && profDescriptionContent) {
                                                     profDescription.innerHTML = profDescriptionContent;
-                                                    console.log(`profDescriptionContent done`);
                                                 }
                                                 //slide3
-                                                if(bioScoreNumsContent && bioScoreNums) {
+                                                if (bioScoreNumsContent && bioScoreNums) {
                                                     bioScoreNums.innerHTML = bioScoreNumsContent;
-                                                    console.log('bioScoreNumsContent done');
                                                 }
-                                                if(bioPercentage && bioScoreNumsContent) {
+                                                if (bioPercentage && bioScoreNumsContent) {
                                                     setPercentagePercent(bioPercentage, bioScoreNumsContent)
-                                                    console.log(`bioPercentage done`);
                                                 }
-                                                if(bioListUlContent && bioListUlContent.length && bioListUl) {
+                                                if (bioListUlContent && bioListUlContent.length && bioListUl) {
                                                     bioListUl.innerHTML = returnFormattedAccordionItems(bioListUlContent);
-                                                    console.log('bioListUl done');
                                                 }
                                                 //slide4
-                                                if(contentScoreNumsContent && contentScoreNums) {
+                                                if (contentScoreNumsContent && contentScoreNums) {
                                                     contentScoreNums.innerHTML = contentScoreNumsContent;
-                                                    console.log('contentScoreNumsContent done');
                                                 }
-                                                if(contentScoreListUlContent && contentScoreListUlContent.length && contentScoreListUl) {
+                                                if (contentScoreListUlContent && contentScoreListUlContent.length && contentScoreListUl) {
                                                     contentScoreListUl.innerHTML = returnFormattedAccordionItems(contentScoreListUlContent);
-                                                    console.log('contentScoreListUlContent done');
                                                 }
-                                                if(contentPercentage && contentScoreNumsContent){
+                                                if (contentPercentage && contentScoreNumsContent) {
                                                     setPercentagePercent(contentPercentage, contentScoreNumsContent);
-                                                    console.log('contentPercentage done');
                                                 }
                                                 //slide 5
-                                                if(prodScoreNumsContent && prodScoreNums){
+                                                if (prodScoreNumsContent && prodScoreNums) {
                                                     prodScoreNums.innerHTML = prodScoreNumsContent;
-                                                    console.log('prodScoreNumsContent done');
                                                 }
-                                                if(prodScoreListUlContent && prodScoreListUlContent.length && prodScoreListUl) {
+                                                if (prodScoreListUlContent && prodScoreListUlContent.length && prodScoreListUl) {
                                                     prodScoreListUl.innerHTML = returnFormattedAccordionItems(prodScoreListUlContent);
-                                                    console.log('prodScoreListUlContent done');
                                                 }
-                                                if(prodScorePercentage && prodScoreNumsContent) {
+                                                if (prodScorePercentage && prodScoreNumsContent) {
                                                     setPercentagePercent(prodScorePercentage, prodScoreNumsContent);
-                                                    console.log('prodScorePercentage done');
                                                 }
                                                 //final-slide
-                                                if(videScoreImgContent && videScoreImg) {
+                                                if (videScoreImgContent && videScoreImg) {
                                                     videScoreImg.setAttribute('src', videScoreImgContent);
-                                                    console.log('videScoreImg done');
                                                 }
-                                                if(videScoreImgType && socialNetworkType === 'tiktok') {
+                                                if (videScoreImgType && socialNetworkType === 'tiktok') {
                                                     videScoreImgType.classList.add('hb-img-long');
                                                 }
-                                                if(videScoreListUlContent && videScoreListUlContent.length && videScoreListUl) {
+                                                if (videScoreListUlContent && videScoreListUlContent.length && videScoreListUl) {
                                                     videScoreListUl.innerHTML = returnFormattedAccordionItems(videScoreListUlContent);
-                                                    console.log('videScoreListUlContent done');
                                                 }
 
                                                 //switch to slider screen
@@ -409,30 +402,16 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    //temp nav
-    try {
-        let navA = document.querySelectorAll('.hb-nav-test a');
-        for (let i = 0; i < navA.length; i++) {
-            navA[i].addEventListener('click', e => {
-                let current = e.target;
-                let attr = current.getAttribute('data-to-screen');
-                if (attr) {
-                    screenNav(attr);
-                }
-            })
-        }
-
-    } catch (e) {
-        console.log(e);
-    }
-
     //loading words
     try {
         let phrases = [
             `Analyzing your bio`,
+            `Analyzing your posts`,
             `Analyzing your audience engagement`,
-            `Analyzing your talking videos`,
-            `Creating your recommendations`,
+            `Analyzing your latest talking videos content`,
+            `Analyzing your latest talking videos production level`,
+            `Analyzing your hooks and CTA effectiveness`,
+            `Creating your personal recommendations`,
         ];
         let currentPhrase = 0;
 
@@ -456,31 +435,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    //test navigation code
-    try {
-        let hbScreenTest = document.querySelectorAll('.hb-screen-test');
-        let activeCSSClass = 'active';
-        let aTrigger = document.querySelectorAll('a[data-to-screen]');
-
-        function deselect() {
-            hbScreenTest.forEach(item => {
-                item.classList.remove(activeCSSClass);
-            })
-        }
-
-        aTrigger.forEach(item => {
-            item.addEventListener('click', (e) => {
-                let dataset = e.target.dataset.toScreen;
-                deselect();
-                let targetElement = document.querySelector(`#${dataset}`);
-                targetElement.classList.add(activeCSSClass);
-            })
-        })
-
-    } catch (e) {
-        console.log(e)
-    }
-
     //swiper
     try {
         const customPaginationValues = [
@@ -494,7 +448,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         let swiper = new Swiper(".mySwiper", {
             clickable: true,
-            //initialSlide: 1, // initial slide
+            // initialSlide: 1, // initial slide
             pagination: {
                 el: ".swiper-pagination1",
                 clickable: true,
@@ -505,6 +459,28 @@ window.addEventListener('DOMContentLoaded', () => {
             navigation: {
                 nextEl: ".swiper-button-next1",
             },
+        });
+
+        // Function to check if screen size matches the criteria
+        function isScreenSizeMatch() {
+            //with this dimension it shouldn't be a scrollbar
+            return window.innerWidth > 1220 && window.innerHeight > 694;
+        }
+
+        // Add scroll event listener
+        window.addEventListener("mousewheel", () => {
+            let sliderHolder = document.querySelector('.hb-content');
+
+            if (isScreenSizeMatch() && sliderHolder.classList.contains('active')) {
+
+                const {scrollY, innerHeight} = window;
+                const documentHeight = document.documentElement.scrollHeight;
+
+                // Check if the user scrolled near the bottom (within 100px of the bottom)
+                if (scrollY + innerHeight >= documentHeight - 100) {
+                    swiper.slideNext(); // Move to the next slide
+                }
+            }
         });
     } catch (e) {
         console.log(e)
@@ -517,22 +493,40 @@ window.addEventListener('DOMContentLoaded', () => {
         if (input) {
             let currentPlaceholder = input.placeholder;
 
+            function handleMobileScreensInput() {
+                if (window.innerWidth < MOB_SIZE) {
+                    if (wrapper) {
+                        wrapper.classList.add('active');
+                        input.placeholder = 'Insert your email for early access ';
+                    }
+                }
+            }
+
+            window.addEventListener('resize', handleMobileScreensInput);
+            handleMobileScreensInput();
+
             function focusIn() {
-                input.placeholder = 'Insert your email for early access ';
-                if (wrapper) {
-                    wrapper.classList.add('active');
+                if (window.innerWidth > MOB_SIZE) {
+                    input.placeholder = 'Insert your email for early access ';
+                    if (wrapper) {
+                        wrapper.classList.add('active');
+                    }
                 }
             }
 
             function focusOut() {
-                input.placeholder = currentPlaceholder;
-                if (wrapper) {
-                    wrapper.classList.remove('active');
+                if (window.innerWidth > MOB_SIZE) {
+                    input.placeholder = currentPlaceholder;
+                    if (wrapper) {
+                        wrapper.classList.remove('active');
+                    }
                 }
             }
 
             input.addEventListener('mouseover', () => {
-                input.focus()
+                if (window.innerWidth > MOB_SIZE) {
+                    input.focus();
+                }
             });
             // input.addEventListener('mouseOut', focusIn);
             input.addEventListener('focus', focusIn);

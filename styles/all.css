@@ -1104,14 +1104,14 @@ body {
   width: 100%;
   margin-inline: auto;
 }
-@media (min-width: 768px) {
+@media (min-width: 1116px) {
   .hb-content .swiper-slide-type1 .swiper-slide-inner {
-    max-width: calc(876px + 16px * 2);
+    max-width: calc(1080px + 16px * 2);
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 1116px) {
   .hb-content .swiper-slide-type1 .swiper-slide-inner {
-    max-width: calc(876px + 25px * 2);
+    max-width: calc(1080px + 25px * 2);
   }
 }
 .hb-content .swiper-slide-type1 .hb-heading-type1 {
@@ -1317,6 +1317,12 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+}
+@media (max-width: 1116px) {
+  .hb-content-side-wrapper {
+    gap: 8px;
+    justify-content: center;
+  }
 }
 .hb-footer-form {
   position: fixed;
@@ -2000,12 +2006,12 @@ body {
   }
 }
 .hb-content-side1 {
-  flex: 0 1 670px;
+  flex: 0 1 852px;
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
 }
-@media (max-width: 768px) {
+@media (max-width: 1116px) {
   .hb-content-side1 {
     gap: 8px;
     flex: 0 1 340px;
@@ -2023,11 +2029,17 @@ body {
   backdrop-filter: blur(4px);
   background: var(--hb-color-light);
 }
-@media (max-width: 768px) {
+@media (max-width: 1116px) {
   .hb-content-box {
     border-radius: 5px;
     padding: 8px 12px 16px 12px;
     backdrop-filter: blur(2.74804926px);
+    flex-grow: 1;
+  }
+}
+@media (max-width: 389.9px) {
+  .hb-content-box {
+    max-width: 100% !important;
   }
 }
 .hb-content-box__top-inner {
@@ -2041,7 +2053,7 @@ body {
   line-height: 180%;
   color: #4a4a4a;
 }
-@media (max-width: 768px) {
+@media (max-width: 1116px) {
   .hb-content-box__heading {
     font-size: 11px;
   }
@@ -2068,15 +2080,15 @@ body {
 .hb-content-box1 {
   min-height: 150px;
   width: 100%;
-  max-width: 327px;
+  max-width: 568px;
 }
 .hb-content-box1 .hb-content-box__circle {
   background: #fdf8c7;
 }
-@media (max-width: 768px) {
+@media (max-width: 1116px) {
   .hb-content-box1 {
     min-height: 108px;
-    max-width: 144px;
+    max-width: 195px;
   }
 }
 .hb-content-box1 .hb-content-box__bottom-desc {
@@ -2085,19 +2097,19 @@ body {
   line-height: 130%;
   color: #373737;
 }
-@media (max-width: 768px) {
+@media (max-width: 1116px) {
   .hb-content-box1 .hb-content-box__bottom-desc {
     font-size: 14px;
   }
 }
 .hb-content-box2 {
-  min-height: 150px;
+  min-height: 154px;
   width: 100%;
-  max-width: 327px;
+  max-width: 418px;
 }
-@media (max-width: 768px) {
+@media (max-width: 1116px) {
   .hb-content-box2 {
-    max-width: 188px;
+    max-width: 166px;
     min-height: 108px;
   }
 }
@@ -2107,7 +2119,7 @@ body {
   line-height: 161%;
   color: #7a7a7a;
 }
-@media (max-width: 768px) {
+@media (max-width: 1116px) {
   .hb-content-box2 .hb-content-box__bottom-desc {
     font-weight: 400;
     font-size: 11px;
@@ -2118,18 +2130,21 @@ body {
 .hb-content-box2 .hb-content-box__circle {
   background: #ffcec4;
 }
-@media (min-width: 768px) {
-  .hb-content-box3,
-  .hb-content-box4,
+@media (min-width: 1116px) {
   .hb-content-box5 {
     min-height: 154px;
     width: 100%;
     max-width: 212.67px;
   }
 }
+.hb-content-box3 {
+  min-height: 154px;
+  width: 100%;
+  max-width: 418px;
+}
 @media (max-width: 768px) {
   .hb-content-box3 {
-    min-width: 188px;
+    max-width: 166px;
     min-height: 108px;
   }
 }
@@ -2155,16 +2170,21 @@ body {
     color: #4a4a4a;
   }
 }
-@media (max-width: 768px) {
+.hb-content-box4 {
+  min-height: 150px;
+  width: 100%;
+  max-width: 268px;
+}
+@media (max-width: 1116px) {
   .hb-content-box4 {
-    min-width: 144px;
+    max-width: 137px;
     min-height: 108px;
   }
 }
 .hb-content-box4 .hb-content-box__heading {
   line-height: 140%;
 }
-@media (max-width: 768px) {
+@media (max-width: 1116px) {
   .hb-content-box4 .hb-content-box__heading {
     line-height: 150%;
   }
@@ -2175,7 +2195,7 @@ body {
   line-height: 117%;
   color: #4a4a4a;
 }
-@media (max-width: 768px) {
+@media (max-width: 1116px) {
   .hb-content-box4 .hb-content-box__bottom {
     font-size: 20px;
   }
@@ -2183,7 +2203,10 @@ body {
 .hb-content-box4 .hb-content-box__circle {
   background: #fbd3fb;
 }
-@media (max-width: 768px) {
+.hb-content-box4 .hb-content-box__bottom-desc {
+  line-height: 100%;
+}
+@media (max-width: 1116px) {
   .hb-content-box5 {
     max-width: 144px;
     min-height: 132.22px;
@@ -2192,7 +2215,7 @@ body {
 .hb-content-box5 .hb-content-box__heading {
   line-height: 161%;
 }
-@media (max-width: 768px) {
+@media (max-width: 1116px) {
   .hb-content-box5 .hb-content-box__heading {
     line-height: 148%;
   }
@@ -2204,7 +2227,7 @@ body {
   color: #7a7a7a;
   margin-top: 2px;
 }
-@media (max-width: 768px) {
+@media (max-width: 1116px) {
   .hb-content-box5 .hb-content-box__text {
     font-size: 11px;
     line-height: 150%;
@@ -2217,7 +2240,7 @@ body {
   line-height: 117%;
   color: #4a4a4a;
 }
-@media (max-width: 768px) {
+@media (max-width: 1116px) {
   .hb-content-box5 .hb-content-box__bottom {
     font-size: 20px;
   }
@@ -2226,23 +2249,25 @@ body {
   background: #d3fbdf;
 }
 .hb-content-box6 {
-  max-width: 190px;
+  max-width: 212px;
+  margin-inside: auto;
 }
-@media (min-width: 768px) {
+@media (min-width: 1116px) {
   .hb-content-box6 {
     height: 100%;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 1116px) {
   .hb-content-box6 {
-    max-width: 188px;
     min-height: 132.22px;
+    max-width: 340px;
+    margin-inline: auto;
   }
 }
 .hb-content-box6 .hb-content-box__heading {
   line-height: 180%;
 }
-@media (max-width: 768px) {
+@media (max-width: 1116px) {
   .hb-content-box6 .hb-content-box__heading {
     line-height: 148%;
   }
@@ -2263,7 +2288,7 @@ body {
   line-height: 117%;
   color: #4a4a4a;
 }
-@media (max-width: 768px) {
+@media (max-width: 1116px) {
   .hb-content-box6 .hb-content-box__text {
     margin-top: 16px;
   }
@@ -2271,9 +2296,15 @@ body {
 .hb-content-box6 .hb-content-box__circle {
   background: #e9d5fd;
 }
-@media (max-width: 768px) {
+@media (max-width: 1116px) {
   .hb-content-side2 {
-    display: none;
+    flex: 1 1 100%;
+    margin-inline: auto;
+  }
+}
+@media (max-width: 700px) {
+  .hb-content-side2 {
+    flex: 0 1 340px;
   }
 }
 .swiper-slide-type2__holder {
