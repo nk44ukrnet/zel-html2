@@ -1218,6 +1218,11 @@ body {
   padding-inline: 6px;
   box-sizing: border-box;
 }
+@media (min-width: 768px) {
+  .hb-content-header .swiper-pagination1 .swiper-pagination-bullet .hb-bullet__count span {
+    transform: translateY(1px);
+  }
+}
 .hb-content-header .swiper-pagination1 .swiper-pagination-bullet.swiper-pagination-bullet-active {
   border: 1px solid #f0f0f0;
   border-radius: 100px;
@@ -1415,6 +1420,8 @@ body {
 @media (max-width: 450px) {
   .hb-loading {
     background-image: url(../img/loading-bg-mob.png);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }
 .hb-loading .hb-container-max {
@@ -1505,7 +1512,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
+  z-index: 4;
   position: relative;
 }
 @media (max-width: 768px) {
@@ -1524,7 +1531,7 @@ body {
 }
 @media (max-width: 768px) {
   .hb-loading__inner {
-    padding-top: 220px;
+    padding-top: 150px;
   }
 }
 .hb-loading__progress-tooltip-wrapper {
@@ -1565,6 +1572,7 @@ body {
   height: 50px;
   box-sizing: border-box;
   padding: 6px 7px;
+  position: relative;
   border-radius: 100px;
   background: rgba(255, 255, 255, 0.8);
   border: 1px solid #d9d9d9;
@@ -1575,7 +1583,7 @@ body {
   .hb-loading__bar-holder {
     margin-top: 8px;
     margin-bottom: 24px;
-    padding: 4px;
+    padding: 2.5px 4px;
     height: 34px;
   }
 }
@@ -1601,9 +1609,6 @@ body {
   }
 }
 .hb-error {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   min-height: 100vh;
   width: 100%;
   background: url(../img/error-bg-desktop1.png);
@@ -1616,6 +1621,8 @@ body {
 @media (max-width: 450px) {
   .hb-error {
     background: url(../img/error-bg-mob1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 }
 .hb-error__container {
@@ -1624,6 +1631,10 @@ body {
   margin-inline: auto;
   box-sizing: border-box;
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .hb-error__logo {
   position: absolute;
@@ -1701,6 +1712,7 @@ body {
   color: #7a7a7a;
 }
 .hb-login {
+  overflow-x: hidden;
   background: url(../img/login-bg-descktop.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -1718,6 +1730,11 @@ body {
 }
 .hb-login .hb-container-max {
   position: relative;
+  max-width: unset;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .hb-login .hb-plane-top {
   position: absolute;
@@ -1768,7 +1785,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
   height: 89px;
+  box-sizing: border-box;
 }
 @media (max-width: 768px) {
   .hb-login__header {
@@ -1777,17 +1798,17 @@ body {
 }
 .hb-login__inner {
   width: 100%;
-  max-width: 760px;
+  max-width: 733px;
   margin-inline: auto;
   padding-top: 104px;
-  padding-bottom: 172.5px;
+  padding-bottom: 50.5px;
   z-index: 2;
   position: relative;
 }
 @media (max-width: 768px) {
   .hb-login__inner {
     margin-block: 0;
-    padding-block: 187.5px;
+    padding-block: 150px;
   }
 }
 .hb-login__header-group {
@@ -1823,6 +1844,11 @@ body {
   right: 0;
   bottom: -55px;
 }
+@media (min-width: 768px) {
+  .hb-login .hb-icon-tiktok {
+    right: -6px;
+  }
+}
 .hb-login-analysis {
   width: 100%;
   max-width: 283px;
@@ -1836,13 +1862,18 @@ body {
 }
 .hb-login-analysis__header {
   text-align: center;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 142%;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 169%;
   color: #4a4a4a;
   margin-bottom: 10px;
   display: table;
   margin-inline: auto;
+}
+@media (max-width: 768px) {
+  .hb-login-analysis__header {
+    font-size: 14px;
+  }
 }
 .hb-login-analysis__holder {
   display: flex;
@@ -1923,6 +1954,11 @@ body {
   border: 1px solid #7a7a7a;
   outline: none;
 }
+.hb-login-form__input:focus + svg path,
+.hb-login-form__input:active + svg path,
+.hb-login-form__input:hover + svg path {
+  fill: #4A4A4A;
+}
 .hb-login-form__input:focus,
 .hb-login-form__input:active,
 .hb-login-form__input:hover,
@@ -1960,7 +1996,7 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 100px;
-  height: 70px;
+  height: 60px;
   border: none;
   outline: none;
   background: #c78dff;
@@ -2290,8 +2326,6 @@ body {
   justify-content: flex-end;
   margin-top: 72px;
   padding-bottom: 78px;
-}
-@media (max-width: 1280px) {
 }
 @media (max-width: 1211px) {
   .swiper-slide-type2__holder {

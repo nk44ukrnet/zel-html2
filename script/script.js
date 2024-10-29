@@ -103,7 +103,8 @@ window.addEventListener('DOMContentLoaded', () => {
             targetScreen.classList.add(activeCSSClass);
         }
     }
-    //screenNav('hb-content')
+
+    // screenNav('hb-content');
 
     function returnFormattedAccordionItems(data) {
         let output = ``;
@@ -132,6 +133,11 @@ window.addEventListener('DOMContentLoaded', () => {
             progressLine.style.width = `${val}%`;
             progressToolTipLine.style.width = `${val}%`;
             progressToolTipValue.innerHTML = `${val}%`;
+            if(val <= 6) {
+                progressLine.style.borderRadius = `50%`;
+            } else {
+                progressLine.style.borderRadius = ``;
+            }
         }
     }
 
@@ -203,7 +209,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
             if (submitBtn) {
                 //temp disable submit button to prevent many requests
-                if(instaLoginValue.trim() === '' && tiktokLoginValue.trim() === '') {
+                if (instaLoginValue.trim() === '' && tiktokLoginValue.trim() === '') {
                     instaLoginEl.classList.add(inputErrCSSClass);
                     tiktokLoginEl.classList.add(inputErrCSSClass);
                 } else {
@@ -450,7 +456,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 el: ".swiper-pagination1",
                 clickable: true,
                 renderBullet: function (index, className) {
-                    return `<span class="hb-bullet ${className}"> <span class="hb-bullet__count">${index + 1}</span> <span class="hb-bullet__text">${customPaginationValues[index]}</span> </span>`;
+                    return `<span class="hb-bullet ${className}"> <span class="hb-bullet__count"><span>${index + 1}</span></span> <span class="hb-bullet__text">${customPaginationValues[index]}</span> </span>`;
                 },
             },
             navigation: {

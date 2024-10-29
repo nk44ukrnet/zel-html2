@@ -171,6 +171,16 @@
       padding-inline: 6px;
       box-sizing: border-box;
 
+      .hb-bullet__count {
+
+        span {
+
+          @media (min-width: @mobile) {
+            transform: translateY(1px);
+          }
+        }
+      }
+
       &.swiper-pagination-bullet-active {
         border: 1px solid #f0f0f0;
         border-radius: 100px;
