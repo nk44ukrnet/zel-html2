@@ -1218,10 +1218,8 @@ body {
   padding-inline: 6px;
   box-sizing: border-box;
 }
-@media (min-width: 768px) {
-  .hb-content-header .swiper-pagination1 .swiper-pagination-bullet .hb-bullet__count span {
-    transform: translateY(1px);
-  }
+.hb-content-header .swiper-pagination1 .swiper-pagination-bullet .hb-bullet__count span {
+  transform: translateY(1px);
 }
 .hb-content-header .swiper-pagination1 .swiper-pagination-bullet.swiper-pagination-bullet-active {
   border: 1px solid #f0f0f0;
@@ -1335,6 +1333,13 @@ body {
   bottom: 20px;
   right: 20px;
 }
+.hb-footer-form.hb-form-has-error input,
+.hb-footer-form.hb-form-has-error input::placeholder {
+  color: #ff4d00;
+}
+.hb-footer-form.hb-form-has-error svg path {
+  stroke: #ff4d00;
+}
 @media (max-width: 768px) {
   .hb-footer-form {
     left: 50%;
@@ -1347,7 +1352,7 @@ body {
   box-shadow: inset 1px 1px 4px 0 rgba(0, 0, 0, 0.12);
   background: rgba(255, 255, 255, 0.8);
   border-radius: 100px;
-  background: linear-gradient(to right, #d3a8fd 0%, #fa7052 100%);
+  background: linear-gradient(to right, #FA7052 0%, #d3a8fd 100%);
   position: relative;
   height: 40px;
   width: 307px;

@@ -104,7 +104,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // screenNav('hb-content');
+    //screenNav('hb-content');
 
     function returnFormattedAccordionItems(data) {
         let output = ``;
@@ -146,7 +146,30 @@ window.addEventListener('DOMContentLoaded', () => {
         element.style.setProperty('--fill', `${displayPercentage}%`);
     }
 
+    //todo: comment it
     //onceFetchIsDone();
+
+    //slider mail form submit
+    try {
+        let formSliderWrapper = document.querySelector('.hb-footer-form');
+        let formSliderMail = document.querySelector('.hb-footer-form form');
+        let formInputMail = document.querySelector('#hb-target-footer-input');
+        let formErrorClass = 'hb-form-has-error';
+
+        formSliderMail.addEventListener('submit', event => {
+            event.preventDefault();
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailPattern.test(formInputMail.value)) {
+                formSliderWrapper.classList.remove(formErrorClass);
+            } else {
+                formSliderWrapper.classList.add(formErrorClass);
+            }
+
+        })
+
+    } catch (e) {
+        console.log(e);
+    }
 
 
     //form login + API fetch logic
