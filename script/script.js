@@ -13,21 +13,49 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     function cellsActiveOnlyFirst() {
-        let cells = document.querySelectorAll('.hb-expand-cell');
-        if (cells.length) {
-            cells.forEach(cell => {
-                let cellItems = cell.querySelectorAll('.hb-expand-cell__item');
-                if (cellItems.length) {
-                    for (let i = 0; i < cellItems.length; i++) {
-                        if (i === 0) {
-                            continue;
-                        } else {
-                            cellItems[i].classList.remove('active');
-                        }
+        setTimeout(() => {
+            let activeSlide = document.querySelectorAll('.hb-content.active .swiper-slide.swiper-slide-active .hb-expand-cell__item');
+            if (activeSlide.length) {
+                let hasActiveSlides = false;
+
+                activeSlide.forEach(cell => {
+                    if (cell.classList.contains('active')) {
+                        hasActiveSlides = true;
                     }
+                })
+
+                if (hasActiveSlides === false) {
+                    activeSlide[0].classList.add('active');
                 }
-            })
-        }
+            }
+        }, 200);
+
+        /* let cells = document.querySelectorAll('.hb-expand-cell');
+         if (cells.length) {
+             cells.forEach(cell => {
+                 let cellItems = cell.querySelectorAll('.hb-expand-cell__item');
+                 if (cellItems.length) {
+                     let firstItem = '';
+                     for (let i = 0; i < cellItems.length; i++) {
+                         cellItems[i].classList.remove('active');
+                         if (i === 0) {
+                             // continue;
+                             // setTimeout(() => {
+                                 cellItems[i].classList.add('active');
+                             // }, 400)
+                             firstItem = cellItems[i];
+                         } //else {
+                             cellItems[i].classList.remove('active');
+                         //}
+                         cellItems[i].classList.remove('active');
+                     }
+                     setTimeout(()=>{
+                         firstItem.classList.add('active');
+                     }, 200)
+                     // firstItem.classList.add('active');
+                 }
+             })
+         }*/
     }
 
     function removeAllActiveClassesFromCurrentParent(el) {
@@ -58,13 +86,25 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function numberFormatOutput(num) {
+        if (num < 1000) {
+            return num.toString(); // Return as is if less than 1000
+        } else if (num >= 1000 && num < 1000000) {
+            const formatted = (num / 1000).toFixed(1);
+            return formatted.endsWith('.0') ? parseInt(formatted) + 'K' : formatted + 'K';
+        } else if (num >= 1000000) {
+            const formatted = (num / 1000000).toFixed(1);
+            return formatted.endsWith('.0') ? parseInt(formatted) + 'M' : formatted + 'M';
+        }
+    }
+
     function onceFetchIsDone() {
         try {
 
             let cells = document.querySelectorAll('.hb-expand-cell');
             if (cells.length) {
                 // cellsInitialSetup();
-                cellsActiveOnlyFirst();
+                // cellsActiveOnlyFirst();
             }
             const elementExpand = document.querySelectorAll('.hb-expand-cell__desc');
 
@@ -104,6 +144,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    //todo: comment it
     //screenNav('hb-content');
 
     function returnFormattedAccordionItems(data) {
@@ -113,9 +154,10 @@ window.addEventListener('DOMContentLoaded', () => {
             let heading = itemSplit[0].replaceAll('*', '');
             itemSplit.shift();
             let restContent = itemSplit.join(':');
-            output += `<div class="hb-expand-cell__item active">
+            output += `<div class="hb-expand-cell__item">
                                         <strong class="hb-expand-cell__heading">
-                                            ${heading}
+                                        <span class="hb-expand-cell__num"><span></span></span>
+                                            <span class="hb-expand-cell__heading-text">${heading}</span>
                                         </strong>
                                         <div class="hb-expand-cell__desc" style="--hb-max-height: 151px">
                                             ${restContent}
@@ -133,13 +175,16 @@ window.addEventListener('DOMContentLoaded', () => {
             progressLine.style.width = `${val}%`;
             progressToolTipLine.style.width = `${val}%`;
             progressToolTipValue.innerHTML = `${val}%`;
-            if(val <= 6) {
+            if (val <= 6) {
                 progressLine.style.borderRadius = `50%`;
             } else {
                 progressLine.style.borderRadius = ``;
             }
         }
     }
+
+    //todo: comment it
+    //setProgressBarLength('50')
 
     function setPercentagePercent(element, percentage) {
         let displayPercentage = 100 - (percentage * 10);
@@ -316,7 +361,7 @@ window.addEventListener('DOMContentLoaded', () => {
                                                     primaryTopicLabel.innerHTML = primaryTopicLabelContent;
                                                 }
                                                 if (followersContent && followers) {
-                                                    followers.innerHTML = followersContent;
+                                                    followers.innerHTML = numberFormatOutput(followersContent);
                                                 }
                                                 if (professionContent && profession) {
                                                     profession.innerHTML = professionContent;
@@ -474,7 +519,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         let swiper = new Swiper(".mySwiper", {
             clickable: true,
-            // initialSlide: 1, // initial slide
+            //initialSlide: 5, // initial slide todo: comment it
             pagination: {
                 el: ".swiper-pagination1",
                 clickable: true,
@@ -485,7 +530,24 @@ window.addEventListener('DOMContentLoaded', () => {
             navigation: {
                 nextEl: ".swiper-button-next1",
             },
+            on: {
+                slideChange: function () {
+                    cellsActiveOnlyFirst(); // Call your function here
+                }
+            }
         });
+
+        let customSwiperPrevButton = document.querySelector('.swiper-custom-button-prev');
+        let customSwiperNextButton = document.querySelector('.swiper-custom-button-next');
+        if (customSwiperPrevButton && customSwiperNextButton) {
+            customSwiperPrevButton.addEventListener('click', function () {
+                console.log('prev click')
+                swiper.slidePrev();
+            })
+            customSwiperNextButton.addEventListener('click', function () {
+                swiper.slideNext();
+            })
+        }
 
         // Function to check if screen size matches the criteria
         function isScreenSizeMatch() {

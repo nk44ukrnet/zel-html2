@@ -12,6 +12,48 @@
   &__footer {
   }
 
+  .swiper {
+    position: relative;
+  }
+
+  .swiper-custom-button-next,
+  .swiper-custom-button-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .swiper-custom-button-next {
+    right: 64px;
+    @media (max-width: 1508px) {
+      right: 20px;
+    }
+    @media (max-width: 1270px) {
+      right: 10px;
+    }
+    @media (max-width: @mobile) {
+      display: none;
+    }
+  }
+
+  .swiper-custom-button-prev {
+    left: 64px;
+    @media (max-width: 1508px) {
+      left: 20px;
+    }
+    @media (max-width: 1270px) {
+      left: 10px;
+    }
+    @media (max-width: @mobile) {
+      display: none;
+    }
+  }
+
   .swiper-wrapper {
   }
 
@@ -346,6 +388,11 @@
 
     &.active, &:hover {
       width: 347px;
+
+      @media (max-width: @mobile) {
+        width: 338px;
+        box-sizing: border-box;
+      }
 
       button {
         opacity: 1;

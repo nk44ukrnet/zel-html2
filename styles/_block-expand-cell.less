@@ -50,7 +50,7 @@
       color: #4a4a4a;
     }
 
-    &::before {
+   /* &::before {
       content: counter(itemCount);
       position: absolute;
       top: 0;
@@ -64,16 +64,42 @@
       justify-content: center;
       background: #e9d5fd;
       border-radius: 50%;
-      font-weight: 400;
-      font-size: 12px;
-      line-height: 100%;
-      text-align: center;
-      color: #373737;
-      font-family: var(--hb-font3);
+
 
       @media (max-width: @mobile) {
         width: 20px;
         height: 20px;
+      }
+    }*/
+  }
+
+  &__num {
+    position: absolute;
+    top: 0;
+    left: -16px;
+    transform: translateX(-100%);
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e9d5fd;
+    border-radius: 50%;
+
+    @media (max-width: @mobile) {
+      width: 20px;
+      height: 20px;
+    }
+    span {
+      &::before {
+        content: counter(itemCount);
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 100%;
+        text-align: center;
+        color: #373737;
+        font-family: var(--hb-font3);
+        transform: translateY(1px);
       }
     }
   }
