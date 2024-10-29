@@ -1,0 +1,9 @@
+:root {
+  --hb-font1: 'Poppins', sans-srif;
+  --hb-font2: 'Inter', sans-srif;
+  --hb-font3: 'Heebo', sans-srif;
+  --hb-color-dark: #000;
+  --hb-color-light: #fff;
+  --hb-transtion1: all 0.25s linear;
+}
+/*# sourceMappingURL=_variables.css.map */

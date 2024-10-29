@@ -263,7 +263,7 @@ window.addEventListener('DOMContentLoaded', () => {
                                                 const nicheContent = results.userInfo.account_info.area_of_expertise; //arr
                                                 //slide2
                                                 const profSummaryUlContent = results.userInfo.highlights.profile_highlights; //arr
-                                                const profImageContent = results.userInfo.profile_pic;
+                                                const profImageContent = results.userInfo.localProfilePic;
                                                 const profNameContent = results.social_account_id;
                                                 const profDescriptionContent = results.userInfo.biography;
                                                 //slide3
