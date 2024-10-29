@@ -103,6 +103,7 @@ window.addEventListener('DOMContentLoaded', () => {
             targetScreen.classList.add(activeCSSClass);
         }
     }
+    //screenNav('hb-content')
 
     function returnFormattedAccordionItems(data) {
         let output = ``;
@@ -164,7 +165,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const followers = document.querySelector(`#hb-followers`); //+
         const profession = document.querySelector(`#hb-profession`); //+
         // const engagementRate = document.querySelector(`#hb-engagement-rate`);
-        //const consistency = document.querySelector(`#hb-consistency`); //+
+        const consistency = document.querySelector(`#hb-consistency`); //+
         const niche = document.querySelector(`#hb-niche`); //+
         //slide2
         const profSummaryUl = document.querySelector(`#hb-prof-summary-ul`); //+
@@ -259,7 +260,7 @@ window.addEventListener('DOMContentLoaded', () => {
                                                 const followersContent = results.userInfo.followers;
                                                 const professionContent = results.userInfo.account_info.profession;
                                                 // const engagementRateContent = results.userInfo.results_summary.engagement_rate;
-                                                //const consistencyContent = results.userInfo.numRecentPosts;
+                                                const consistencyContent = results.userInfo.results_summary.consistency_score;
                                                 const nicheContent = results.userInfo.account_info.area_of_expertise; //arr
                                                 //slide2
                                                 const profSummaryUlContent = results.userInfo.highlights.profile_highlights; //arr
@@ -281,28 +282,24 @@ window.addEventListener('DOMContentLoaded', () => {
 
                                                 if (targetAudienceContent && targetAudience) {
                                                     targetAudience.innerHTML = targetAudienceContent;
-                                                    console.log('targetAudienceContent done')
                                                 }
                                                 if (primaryTopicLabelContent && primaryTopicLabel) {
                                                     primaryTopicLabel.innerHTML = primaryTopicLabelContent;
-                                                    console.log('primaryTopicLabelContent done')
                                                 }
                                                 if (followersContent && followers) {
                                                     followers.innerHTML = followersContent;
-                                                    console.log('followers done')
                                                 }
                                                 if (professionContent && profession) {
                                                     profession.innerHTML = professionContent;
-                                                    console.log('profession done')
                                                 }
-                                                // if (consistencyContent && consistency) {
-                                                //     consistency.innerHTML = consistencyContent;
-                                                //     console.log(`consistencyContent done`);
-                                                // }
+                                                if (consistencyContent && consistency) {
+                                                    consistency.innerHTML = consistencyContent;
+                                                }
                                                 // if(engagementRateContent && engagementRate) {
                                                 //     engagementRate.innerHTML = engagementRateContent;
                                                 //     console.log('engagementRate done')
                                                 // }
+
                                                 if (nicheContent && nicheContent.length && niche) {
                                                     niche.innerHTML = nicheContent.map(item => `<span>${item}</span>`).join('');
                                                 }
