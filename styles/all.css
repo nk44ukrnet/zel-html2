@@ -1588,6 +1588,7 @@ body {
   margin-inline: auto;
   box-sizing: border-box;
   padding-top: 188px;
+  padding-bottom: 20px;
   position: relative;
   z-index: 2;
 }
@@ -2389,6 +2390,8 @@ body {
   margin-top: 72px;
   padding-bottom: 78px;
 }
+@media (max-width: 1280px) {
+}
 @media (max-width: 1211px) {
   .swiper-slide-type2__holder {
     flex-wrap: wrap;
@@ -2828,13 +2831,13 @@ body {
 @media (max-width: 932px) {
   .hb-img-long .swiper-slide-type4__graph-holder {
     width: 210.18px;
-    height: 276.12px;
+    height: auto;
   }
 }
 @media (max-width: 932px) {
   .swiper-slide-type4__graph-holder {
     width: 222px;
-    height: 222px;
+    height: auto;
     margin-inline: auto;
   }
 }
@@ -2872,23 +2875,23 @@ body {
   box-shadow: -5px 7px 18px 0 rgba(0, 0, 0, 0.1), -20px 26px 33px 0 rgba(0, 0, 0, 0.09), -44px 59px 44px 0 rgba(0, 0, 0, 0.05), -78px 105px 52px 0 rgba(0, 0, 0, 0.01), -122px 164px 57px 0 rgba(0, 0, 0, 0);
   border-radius: 4px;
   width: 340px;
-  height: 340px;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
 }
 .hb-img-long .swiper-slide-type4__graph-img {
   width: 320px;
-  height: 426px;
+  height: auto;
 }
 @media (max-width: 932px) {
   .hb-img-long .swiper-slide-type4__graph-img {
     width: 197.82px;
-    height: 263.76px;
+    height: auto;
   }
 }
 @media (max-width: 932px) {
   .swiper-slide-type4__graph-img {
     width: 210px;
-    height: 210px;
+    height: auto;
   }
 }
 .swiper-slide-type4 .swiper-slide-type4__item--img.hb-img-long .hb-svg-circle {

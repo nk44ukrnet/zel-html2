@@ -1,5 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
     const MOB_SIZE = 768;
+    let loadingProgress = 0;
 
     //expandable boxes
     function cellsInitialSetup() {
@@ -145,7 +146,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     //todo: comment it
-    //screenNav('hb-content');
+    // screenNav('hb-content');
 
     function returnFormattedAccordionItems(data) {
         let output = ``;
@@ -181,10 +182,11 @@ window.addEventListener('DOMContentLoaded', () => {
                 progressLine.style.borderRadius = ``;
             }
         }
+        loadingProgress = val;
     }
 
     //todo: comment it
-    //setProgressBarLength('50')
+    //setProgressBarLength('94')
 
     function setPercentagePercent(element, percentage) {
         let displayPercentage = 100 - (percentage * 10);
@@ -476,21 +478,30 @@ window.addEventListener('DOMContentLoaded', () => {
     //loading words
     try {
         let phrases = [
+            `Analyzing your primary topic, target audience and niche`,
             `Analyzing your bio`,
             `Analyzing your posts`,
-            `Analyzing your audience engagement`,
-            `Analyzing your latest talking videos content`,
-            `Analyzing your latest talking videos production level`,
-            `Analyzing your hooks and CTA effectiveness`,
-            `Creating your personal recommendations`,
+            `Analyzing your posting consistency`,
+            `Analyzing your latest talking videos’ content`,
+            `Analyzing your hooks punchiness`,
+            `Analyzing script tightness`,
+            `Analyzing Call-To-Action clarity and effectiveness`,
+            `Analyzing your latest talking videos’ production level`,
+            `Creating your personal recommendations
+`,
         ];
         let currentPhrase = 0;
 
         let loadingHeading = document.querySelector('.hb-loading__text');
         let parentEl = loadingHeading.closest('.hb-loading');
         if (loadingHeading && phrases.length > 0) {
-            setInterval(() => {
+           let currentInterval =  setInterval(() => {
                 if (!parentEl.classList.contains('active')) return;
+
+                if(loadingProgress >= 95) {
+                    loadingHeading.textContent = phrases[phrases.length - 1];
+                    return;
+                }
 
                 if ((currentPhrase + 1) < (phrases.length)) {
                     currentPhrase += 1;
@@ -519,7 +530,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         let swiper = new Swiper(".mySwiper", {
             clickable: true,
-            //initialSlide: 5, // initial slide todo: comment it
+            //initialSlide: 6, // initial slide todo: comment it
             pagination: {
                 el: ".swiper-pagination1",
                 clickable: true,
