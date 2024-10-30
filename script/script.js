@@ -30,33 +30,6 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
             }
         }, 200);
-
-        /* let cells = document.querySelectorAll('.hb-expand-cell');
-         if (cells.length) {
-             cells.forEach(cell => {
-                 let cellItems = cell.querySelectorAll('.hb-expand-cell__item');
-                 if (cellItems.length) {
-                     let firstItem = '';
-                     for (let i = 0; i < cellItems.length; i++) {
-                         cellItems[i].classList.remove('active');
-                         if (i === 0) {
-                             // continue;
-                             // setTimeout(() => {
-                                 cellItems[i].classList.add('active');
-                             // }, 400)
-                             firstItem = cellItems[i];
-                         } //else {
-                             cellItems[i].classList.remove('active');
-                         //}
-                         cellItems[i].classList.remove('active');
-                     }
-                     setTimeout(()=>{
-                         firstItem.classList.add('active');
-                     }, 200)
-                     // firstItem.classList.add('active');
-                 }
-             })
-         }*/
     }
 
     function removeAllActiveClassesFromCurrentParent(el) {
@@ -146,7 +119,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     //todo: comment it
-    // screenNav('hb-content');
+     //screenNav('hb-content');
 
     function returnFormattedAccordionItems(data) {
         let output = ``;
@@ -203,11 +176,40 @@ window.addEventListener('DOMContentLoaded', () => {
         let formInputMail = document.querySelector('#hb-target-footer-input');
         let formErrorClass = 'hb-form-has-error';
 
-        formSliderMail.addEventListener('submit', event => {
+        const apiUrl = 'https://api.foldesk.com/social-audit'; // Replace with actual API URL if needed
+        const apiKey = 'fd_key_4ffb4ecd314e471eaa020050a0797f1e.gwshHLXHjpqG4UrYx2wDP4KTTUGtPDHc31zb4y0eBdUSjDCuO7fVyEE6gCv4hKjIF7T3jwlIHrCKZTq80cjcBH49IO0Q6vJWQ4U7duGeY10b2C1kdsNvSxJDqxPpG747EjdL803HZPVf7a3ZmcAwwaj4SiNHrd3kFS1XBvhlvZfW1FHgMoJsFidgYFZwFzOq';
+
+        formSliderMail.addEventListener('submit', async (event) => {
             event.preventDefault();
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (emailPattern.test(formInputMail.value)) {
                 formSliderWrapper.classList.remove(formErrorClass);
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${apiKey}`,
+                        },
+                        body: JSON.stringify({ 'social-audit': formInputMail.value }),
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        console.log('Success:', result);
+                        // alert('Email submitted successfully!');
+                    } else {
+                        const errorData = await response.json();
+                        console.error('Error:', errorData);
+                        // alert('Failed to submit email.');
+                    }
+
+                } catch (error) {
+                    console.error('Network Error:', error);
+                    // alert('Network error, please try again.');
+                }
+
             } else {
                 formSliderWrapper.classList.add(formErrorClass);
             }
